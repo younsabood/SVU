@@ -104,7 +104,7 @@ body {
 .cont-form {
   position: relative;
   left: calc(30% + 20px);
-  width: calc(85% - 20px);
+  width: calc(70% - 20px);
   height: 70vh;
   top: 0;
   padding: 40px;
@@ -333,7 +333,7 @@ th,td {
     backdrop-filter: blur(50px);
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .aside {
     width: 100%;
     z-index: 1;
