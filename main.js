@@ -87,6 +87,7 @@ function fet(x) {
         temp += "<td>" + itemData.birth+"'" + "</td></tr>"; 
       });
       let z =""
+      tt.innerHTML = "";
       document.getElementById("data").innerHTML = temp;
       z = JSON.stringify(data).split("")
       z.forEach((e)=>{
