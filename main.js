@@ -22,7 +22,7 @@ birth.addEventListener("blur", function () {
 
 number.addEventListener("input", function () {
   if (number.value == "+963") {
-    number.setAttribute("pattern", "[+][0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{3}'");
+    number.setAttribute("pattern", "[+][0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{3}");
   }
 });
 number.addEventListener("focus", function () {
