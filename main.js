@@ -38,9 +38,31 @@ number.addEventListener("blur", function () {
 });
 
 window.addEventListener("load", () => {
-  window.addEventListener("online", () => console.log("Became online"));
-  window.addEventListener("offline", () => console.log("Became offline"));
-  console.log("window.navigator.onLine is " + window.navigator.onLine);
+  let online = document.querySelector(".stateos");
+  let on = document.getElementById("on");
+  window.addEventListener("online", () => {
+    online.textContent = "You Became Online";
+    on.style.color = "#00ff26";
+    setTimeout(() => {
+      online.innerHTML = "Online";
+    }, 9000);
+  });
+  window.addEventListener("offline", () => {
+    on.style.color = "#ff2200";
+    online.textContent = "You Became Offline";
+    setTimeout(() => {
+      online.textContent = "Offline";
+    }, 9000);
+  });
+  if (window.navigator.onLine) {
+    online.innerHTML = "Online";
+    on.style.color = "#00ff26";
+    swal.fire("Online", "هذا الموقع يتطلب الأتصال بالأنترنت", "success");
+  } else {
+    online.innerHTML = "Offline";
+    on.style.color = "#ff2200";
+    swal.fire("Offline", "هذا الموقع يتطلب الأتصال بالأنترنت", "error");
+  }
 });
 
 bar.onclick = function () {
