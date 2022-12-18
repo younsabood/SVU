@@ -9,6 +9,9 @@ let number = document.getElementById("number");
 let birth = document.getElementById("birth");
 let username = document.getElementById("username");
 
+let prog_select = document.getElementById("prog-select");
+let spin = document.getElementById("spin");
+
 birth.addEventListener("focus", function () {
   birth.type = "date";
 });
@@ -34,6 +37,12 @@ number.addEventListener("blur", function () {
   }
 });
 
+window.addEventListener("load", () => {
+  window.addEventListener("online", () => console.log("Became online"));
+  window.addEventListener("offline", () => console.log("Became offline"));
+  console.log("window.navigator.onLine is " + window.navigator.onLine);
+});
+
 bar.onclick = function () {
   setTimeout(() => {
     aside_hide.style.opacity = 1;
@@ -45,17 +54,32 @@ cancel_bar.onclick = function () {
     aside_hide.style.opacity = 0;
   }, 200);
 };
+let show = document.getElementById("show");
+show.onclick = function () {
+  fet(null);
+};
 let tt = document.querySelector(".tt");
+let copy = document.querySelector(".copy");
+copy.onclick = function () {
+  navigator.clipboard.writeText(tt.value);
+  swal.fire("Copy", "تم النسخ للحافظة", "success");
+};
 var x = "";
 if (document.querySelector('input[name="sort"]')) {
   document.querySelectorAll('input[name="sort"]').forEach((elem) => {
     elem.addEventListener("change", function (event) {
+      spin.style.opacity = 1;
+      spin.classList.add("spin");
+      console.log("add");
       x = event.target.value;
       fet(x);
     });
   });
 }
 function fet(x) {
+  var temp = "";
+  tt.innerHTML = "";
+  var json_data = {};
   fetch("https://sheetdb.io/api/v1/jzo9sx7vzeiyx").then((res) => {
     res.json().then((data) => {
       console.log(data);
@@ -64,43 +88,63 @@ function fet(x) {
           if (a.id < b.id) {
             return -1;
           }
-        }
-        if (x != "" && x == "username") {
+        } else if (x != "" && x == "username") {
           if (a.username < b.username) {
             return -1;
           }
-        }
-        if (x != "" && x == "account_name") {
+        } else if (x != "" && x == "account_name") {
           if (a.account_name < b.account_name) {
             return -1;
           }
+        } else if (x != "" && x == "program") {
+          if (a.account_name < b.account_name) {
+            return -1;
+          }
+        } else if (x == null) {
+          data = data;
         }
       });
-      var temp = "";
+      setTimeout(() => {
+        spin.classList.remove("spin");
+        spin.style.opacity = 0;
+      }, 500);
       data.forEach((itemData) => {
-        temp += "<tr>";
-        temp += "<td>" + itemData.id + "</td>";
-        temp += "<td>" + itemData.program + "</td>";
-        temp += "<td>" + itemData.account_name + "</td>";
-        temp += "<td>" + itemData.username + "</td>";
-        temp += "<td>" + itemData.number + "</td>";
-        temp += "<td>" + itemData.birth+"'" + "</td></tr>"; 
+        if (itemData.program == prog_select.value && prog_select.value != "") {
+          temp += "<tr>";
+          temp += "<td>" + itemData.id + "</td>";
+          temp += "<td>" + itemData.program + "</td>";
+          temp += "<td>" + itemData.account_name + "</td>";
+          temp += "<td>" + itemData.username + "</td>";
+          temp += "<td>" + itemData.number + "</td>";
+          temp += "<td>" + itemData.birth + "'" + "</td></tr>";
+          document.getElementById("data").innerHTML = temp;
+          json_data = {
+            id: itemData.id,
+            program: itemData.program,
+            account: itemData.account_name,
+            username: itemData.username,
+            birth: itemData.birth,
+          };
+          tt.textContent += JSON.stringify(json_data, null, 4);
+        } else if (prog_select.value == "") {
+          temp += "<tr>";
+          temp += "<td>" + itemData.id + "</td>";
+          temp += "<td>" + itemData.program + "</td>";
+          temp += "<td>" + itemData.account_name + "</td>";
+          temp += "<td>" + itemData.username + "</td>";
+          temp += "<td>" + itemData.number + "</td>";
+          temp += "<td>" + itemData.birth + "'" + "</td></tr>";
+          document.getElementById("data").innerHTML = temp;
+          json_data = {
+            id: itemData.id,
+            program: itemData.program,
+            account: itemData.account_name,
+            username: itemData.username,
+            birth: itemData.birth,
+          };
+          tt.textContent += JSON.stringify(json_data, null, 4);
+        }
       });
-
-      document.getElementById("data").innerHTML = temp;
-      let z = ""
-      tt.innerHTML ="";
-      z = JSON.stringify(data).split("")
-      z.forEach((e)=>{
-        if(e == "}"){
-          tt.innerHTML += `<br>`;
-        }
-        tt.innerHTML += e;
-        if(e == "{" || e == ","){
-          tt.innerHTML += `<br>`;
-          console.log("{")
-        }
-      })
     });
   });
 }
@@ -115,7 +159,7 @@ function createCaptcha() {
       captcha[q] = Math.floor(Math.random() * 10 + 0);
     }
   }
- var theCaptcha = captcha.join("");
+  var theCaptcha = captcha.join("");
   activeCaptcha.innerHTML = `${theCaptcha}`;
 }
 let cap = document.getElementById("cap");
@@ -123,13 +167,11 @@ let cap = document.getElementById("cap");
 var id = document.getElementById("id");
 let signupbtn = document.getElementById("account_name");
 signupbtn.addEventListener("mouseover", () => {
-  fetch("https://sheetdb.io/api/v1/jzo9sx7vzeiyx").then(
-    (res) => {
-      res.json().then((data) => {
-        id.value = data.length;
-      });
-    }
-  );
+  fetch("https://sheetdb.io/api/v1/jzo9sx7vzeiyx").then((res) => {
+    res.json().then((data) => {
+      id.value = data.length;
+    });
+  });
 });
 
 function openOnce(url, target) {
@@ -142,27 +184,27 @@ function openOnce(url, target) {
     winref.location.href = url;
   }
   document.getElementById("id").value = "";
-        input.forEach((e) => {
-          e.value = "";
-          if (birth.value == "") {
-            birth.type = "text";
-          } else {
-            birth.type = "date";
-          }
-          if (number.value == "") {
-            number.placeholder = " ";
-          }
-        });
-      window.location.reload();
+  input.forEach((e) => {
+    e.value = "";
+    if (birth.value == "") {
+      birth.type = "text";
+    } else {
+      birth.type = "date";
+    }
+    if (number.value == "") {
+      number.placeholder = " ";
+    }
+  });
+  window.location.reload();
   return winref;
 }
 let form = document.getElementById("sheetdb-form");
 var signup = document.getElementById("signupbtn");
 signup.disabled = true;
 cap.addEventListener("input", function () {
-  if(activeCaptcha.innerHTML == cap.value && id != ""){
-    signup.disabled= false;
-  }else{
+  if (activeCaptcha.innerHTML == cap.value && id != "") {
+    signup.disabled = false;
+  } else {
     signup.disabled = true;
   }
 });
@@ -177,9 +219,9 @@ form.addEventListener("submit", (e) => {
     method: "POST",
     body: new FormData(document.getElementById("sheetdb-form")),
   }).then((res) => {
-      openOnce(
-        "https://docs.google.com/spreadsheets/d/18kZ67VtcsijASNqx4t4f40wwjxdY86muDkKKJ06Tfmk/edit?usp=sharing,",
-        "about:blank"
-      );
+    openOnce(
+      "https://docs.google.com/spreadsheets/d/18kZ67VtcsijASNqx4t4f40wwjxdY86muDkKKJ06Tfmk/edit?usp=sharing,",
+      "about:blank"
+    );
   });
 });
