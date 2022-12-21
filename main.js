@@ -119,7 +119,7 @@ function fet(x) {
             return -1;
           }
         } else if (x != "" && x == "program") {
-          if (a.account_name < b.account_name) {
+          if (a.program < b.program) {
             return -1;
           }
         } else if (x == null) {
@@ -165,6 +165,11 @@ function fet(x) {
             birth: itemData.birth,
           };
           tt.textContent += JSON.stringify(json_data, null, 4);
+        } else if (
+          itemData.program != prog_select.value &&
+          prog_select.value != ""
+        ) {
+          document.getElementById("data").innerHTML = "";
         }
       });
     });
@@ -174,6 +179,7 @@ function fet(x) {
 let captcha = new Array();
 const activeCaptcha = document.getElementById("captcha");
 function createCaptcha() {
+  activeCaptcha.style.textDecoration = "line-through";
   for (q = 0; q < 6; q++) {
     if (q % 2 == 0) {
       captcha[q] = String.fromCharCode(Math.floor(Math.random() * 26 + 65));
