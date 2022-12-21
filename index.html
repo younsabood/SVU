@@ -46,7 +46,7 @@
       </aside>
       <section class="cont-form wh100">
         <form
-          action="https://sheetdb.io/api/v1/jzo9sx7vzeiyx"
+          action="https://sheetdb.io/api/v1/wfbays47g15vb"
           method="post"
           id="sheetdb-form"
           class="flex form"
@@ -59,7 +59,7 @@
                 placeholder=" "
                 id="account_name"
                 name="data[account_name]"
-                pattern="[a-z]+_[0-9]{2,6}$"
+                pattern="(?=.*[A-Z]).{1,1}(?=.*[a-z]).{1,}_[0-9]{6,6}$"
                 required
               />
               <label for="account_name" class="label">اسم المستخدم</label>
@@ -78,6 +78,7 @@
                 placeholder=" "
                 id="username"
                 name="data[username]"
+                pattern="[أ-ي].{1,}"
                 required
               />
               <label for="username" class="label">اسم الطالب</label>

@@ -102,7 +102,7 @@ function fet(x) {
   var temp = "";
   tt.innerHTML = "";
   var json_data = {};
-  fetch("https://sheetdb.io/api/v1/jzo9sx7vzeiyx").then((res) => {
+  fetch("https://sheetdb.io/api/v1/pccth9gi61z5c").then((res) => {
     res.json().then((data) => {
       console.log(data);
       data = data.sort((a, b) => {
@@ -189,7 +189,7 @@ let cap = document.getElementById("cap");
 var id = document.getElementById("id");
 let signupbtn = document.getElementById("account_name");
 signupbtn.addEventListener("mouseover", () => {
-  fetch("https://sheetdb.io/api/v1/jzo9sx7vzeiyx").then((res) => {
+  fetch("https://sheetdb.io/api/v1/rqxmsdz4sa5hb").then((res) => {
     res.json().then((data) => {
       id.value = data.length;
     });
