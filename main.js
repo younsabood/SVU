@@ -132,6 +132,7 @@ function fet(x) {
       }, 500);
       data.forEach((itemData) => {
         if (itemData.program == prog_select.value && prog_select.value != "") {
+          var z = true;
           temp += "<tr>";
           temp += "<td>" + itemData.id + "</td>";
           temp += "<td>" + itemData.program + "</td>";
@@ -167,7 +168,7 @@ function fet(x) {
           tt.textContent += JSON.stringify(json_data, null, 4);
         } else if (
           itemData.program != prog_select.value &&
-          prog_select.value != ""
+          prog_select.value != "" && !z
         ) {
           document.getElementById("data").innerHTML = "";
         }
@@ -203,11 +204,8 @@ signupbtn.addEventListener("mouseover", () => {
 });
 
 function openOnce(url, target) {
-  // open a blank "target" window
-  // or get the reference to the existing "target" window
   let winref = window.open("", target, "");
 
-  // if the "target" window was just opened, change its url
   if (winref.location.href === "about:blank") {
     winref.location.href = url;
   }

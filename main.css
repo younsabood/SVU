@@ -1,4 +1,5 @@
 * {
+  /*تنسيقات لكل العناصر*/
   margin: 0;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -8,6 +9,7 @@ body {
   font-family: "Abhaya Libre", serif;
   position: relative;
 }
+/*تنسيق شريط التمرير*/
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;
@@ -31,7 +33,9 @@ body::-webkit-scrollbar-thumb {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
+/*نهاية تنسيق شريط التمرير*/
 .wh100 {
+  /*تنسيقات مستخدة دائما فقمنا بعزلها ب class خاص*/
   width: 100%;
   height: 100%;
 }
@@ -42,6 +46,7 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 .contener {
+  /*تنسيق حاوية الصفحة*/
   width: 100%;
   min-height: 200vh;
   background-image: url("1.jpg");
@@ -49,6 +54,7 @@ body::-webkit-scrollbar-thumb {
   height: fit-content;
 }
 .bar {
+  /*تنسيق زر (=) باجهزة الهاتف*/
   font-size: 30px;
   position: absolute;
   left: 30px;
@@ -58,6 +64,7 @@ body::-webkit-scrollbar-thumb {
   width: 40px;
   height: 40px;
 }
+/*بداية تنسيق الحاوية الجانبية*/
 .aside {
   margin: 20px;
   width: 30%;
@@ -86,19 +93,23 @@ body::-webkit-scrollbar-thumb {
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
 }
+/*تنسيق حاوية اسقونة الصفحة*/
 .aside .img-cont {
   position: absolute;
   left: -60px;
   top: -35px;
-  width: 160px;
+  width: 100%;
   height: 160px;
   z-index: 2;
 }
 .aside .img-cont p {
-  font-size: 35px;
+  font-size: 33px;
   position: absolute;
   left: 160px;
+  font-style: italic;
+  font-weight: 600;
 }
+/*زر اغلاق الحاوية الجانبية*/
 .aside .cancel-bar {
   opacity: 0;
   width: 40px;
@@ -113,17 +124,21 @@ body::-webkit-scrollbar-thumb {
   -ms-transition: all 0.8s;
   -o-transition: all 0.8s;
 }
+/*اسم الدكتور و اسمائنا*/
 .aside .our-name {
   position: absolute;
-  top: 100px;
+  top: 60px;
   padding: 25px;
   width: 100%;
   height: 85%;
+  font-weight: 400;
+  font-style: italic;
 }
 .aside .our-name p {
   margin: 12px;
   font-size: 25px;
 }
+/*معلومات الحالة و الحقوق النشر*/
 .aside .on-off {
   width: 100%;
   position: absolute;
@@ -141,9 +156,18 @@ body::-webkit-scrollbar-thumb {
   opacity: 1;
   transition: all 1s;
 }
+.stateos {
+  font-size: 25px;
+  color: #ff2200;
+  text-decoration: none;
+}
+/*ايقونات ال svg  ف الحاوية الجانبية*/
 .aside svg {
   padding-left: 8px;
+  font-size: 25px;
+  color: #ff2200;
 }
+/*نهاية تنسيق الحاوية الجانبية و بداية تنسيق حقول الادخال*/
 .cont-form {
   position: relative;
   left: calc(30% + 20px);
@@ -152,7 +176,7 @@ body::-webkit-scrollbar-thumb {
   top: 0;
   padding: 40px;
 }
-
+/*تنسيقات حقول الادخال*/
 .form {
   width: 100%;
   height: fit-content;
@@ -179,6 +203,7 @@ body::-webkit-scrollbar-thumb {
   box-shadow: none;
   color: #111;
 }
+/*تنسيقات نصوص التابعة لحقوق الادخال*/
 .input-form label {
   transform: translateY(-50%);
   position: absolute;
@@ -195,6 +220,7 @@ body::-webkit-scrollbar-thumb {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
 }
+/*عند الضغط و عند التحقق و عند عدم التحقق ولكن النص المساعد ظاهر*/
 input:focus,
 input:valid,
 input:invalid:placeholder-shown {
@@ -216,9 +242,11 @@ input:invalid:not(:placeholder-shown) ~ label {
   border-color: #ff2200;
   background-color: transparent;
 }
+/*تنسيق الازرار*/
 .button-cont {
   width: 200px;
 }
+/*الزر عندما يكون معطل*/
 .signupbtn-all[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
@@ -230,6 +258,7 @@ input:invalid:not(:placeholder-shown) ~ label {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
 }
+/*تنسيق الازرار بشكل عاك*/
 .signupbtn-all {
   background: rgba(0, 255, 38, 0.5);
   border-radius: 999px;
@@ -270,6 +299,8 @@ input:invalid:not(:placeholder-shown) ~ label {
   color: #fff;
   box-shadow: none;
 }
+
+/*تنسيق الكاباتشا*/
 .restart {
   width: 100px;
   height: 40px;
@@ -290,6 +321,7 @@ input:invalid:not(:placeholder-shown) ~ label {
   color: #00ff26;
   cursor: pointer;
 }
+/*نهاية القسم الاول وبداية الثاني*/
 .s2 {
   position: relative;
   left: calc(30% + 20px);
@@ -300,6 +332,7 @@ input:invalid:not(:placeholder-shown) ~ label {
 .combo {
   position: relative;
 }
+/*تنسيق انميشن الانتظار*/
 .spiner {
   font-size: 20px;
   line-height: 20px;
@@ -321,6 +354,7 @@ input:invalid:not(:placeholder-shown) ~ label {
   animation-fill-mode: forwards;
   animation-duration: 0.5s;
 }
+/*تنسيق قائمة البرامج*/
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -376,6 +410,7 @@ select::-ms-expand {
   color: #fff !important;
   font-weight: 500;
 }
+/*تنسيق قائمة sort */
 input[type="radio"] {
   appearance: none;
   width: 16px;
@@ -389,6 +424,7 @@ input[type="radio"] {
 input[type="radio"]:checked {
   background-color: #00ff26;
 }
+/*تنسيق الجدول*/
 table {
   width: 100%;
   border-collapse: collapse;
@@ -431,11 +467,13 @@ th,
 td {
   padding: 5px;
 }
+/*تنسيق منطقة كتابة ال json*/
 .api {
   width: 100%;
   height: 50vh;
   position: relative;
 }
+/*تنسيق زر النسخ*/
 .api .copy {
   color: #00ff26;
   font-size: 25px;
@@ -455,13 +493,14 @@ td {
   color: #000;
   user-select: none;
 }
+/*تنسيق شريط التمرير ل منطقة الكتابة*/
 .tt::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;
 }
 
 .tt::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
   background-color: #f5f5f5;
 }
 
@@ -476,6 +515,7 @@ td {
 .api .tt::selection {
   background-color: transparent;
 }
+/*الانميشن*/
 @keyframes blur {
   from {
     backdrop-filter: blur(5px);
@@ -500,6 +540,7 @@ td {
     -o-transform: rotate(360deg);
   }
 }
+/*تنسيقات للشاشات المختلفة*/
 @media screen and (max-width: 768px) {
   .aside {
     width: 100%;
