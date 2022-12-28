@@ -158,14 +158,12 @@ body::-webkit-scrollbar-thumb {
 }
 .stateos {
   font-size: 25px;
-  color: #ff2200;
   text-decoration: none;
 }
 /*ايقونات ال svg  ف الحاوية الجانبية*/
 .aside svg {
   padding-left: 8px;
   font-size: 25px;
-  color: #ff2200;
 }
 /*نهاية تنسيق الحاوية الجانبية و بداية تنسيق حقول الادخال*/
 .cont-form {

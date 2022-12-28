@@ -39,7 +39,7 @@ number.addEventListener("blur", function () {
 
 window.addEventListener("load", () => {
   let online = document.querySelector(".stateos");
-  let on = document.getElementById("on");
+  let on = document.getElementById("stateos");
   window.addEventListener("online", () => {
     online.textContent = "You Became Online";
     on.style.color = "#00ff26";
