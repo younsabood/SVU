@@ -101,6 +101,7 @@ if (document.querySelector('input[name="sort"]')) {
 function fet(x) {
   var temp = "";
   tt.innerHTML = "";
+  var z = true;
   var json_data = {};
   fetch("https://sheetdb.io/api/v1/pccth9gi61z5c").then((res) => {
     res.json().then((data) => {
@@ -132,7 +133,7 @@ function fet(x) {
       }, 500);
       data.forEach((itemData) => {
         if (itemData.program == prog_select.value && prog_select.value != "") {
-          var z = true;
+          z = true;
           temp += "<tr>";
           temp += "<td>" + itemData.id + "</td>";
           temp += "<td>" + itemData.program + "</td>";
@@ -168,7 +169,7 @@ function fet(x) {
           tt.textContent += JSON.stringify(json_data, null, 4);
         } else if (
           itemData.program != prog_select.value &&
-          prog_select.value != "" && !z
+          prog_select.value != "" && z != true
         ) {
           document.getElementById("data").innerHTML = "";
         }
