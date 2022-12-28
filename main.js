@@ -170,7 +170,8 @@ function fet(x) {
           tt.textContent += JSON.stringify(json_data, null, 4);
         } else if (
           itemData.program != prog_select.value &&
-          prog_select.value != "" && z != true
+          prog_select.value != "" &&
+          z != true
         ) {
           document.getElementById("data").innerHTML = "";
         }
@@ -240,8 +241,8 @@ form.addEventListener("submit", (e) => {
     activeCaptcha.click();
     signup.disabled = true;
     number.setAttribute("pattern", "[+][0-9]{3}-[0-9]{3}-[0-9]{4}");
-      birth.type = "text";
-      number.placeholder = " ";
+    birth.type = "text";
+    number.placeholder = " ";
     openOnce(
       "https://docs.google.com/spreadsheets/d/18kZ67VtcsijASNqx4t4f40wwjxdY86muDkKKJ06Tfmk/edit?usp=sharing,",
       "about:blank"
