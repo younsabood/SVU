@@ -10,6 +10,7 @@ let birth = document.getElementById("birth");
 let username = document.getElementById("username");
 
 let prog_select = document.getElementById("prog-select");
+let reset = document.getElementById("reset");
 let spin = document.getElementById("spin");
 
 birth.addEventListener("focus", function () {
@@ -213,16 +214,7 @@ function openOnce(url, target) {
   document.getElementById("id").value = "";
   input.forEach((e) => {
     e.value = "";
-    if (birth.value == "") {
-      birth.type = "text";
-    } else {
-      birth.type = "date";
-    }
-    if (number.value == "") {
-      number.placeholder = " ";
-    }
   });
-  window.location.reload();
   return winref;
 }
 let form = document.getElementById("sheetdb-form");
@@ -238,14 +230,18 @@ cap.addEventListener("input", function () {
 form.addEventListener("submit", (e) => {
   let num = "'" + number.value + "'";
   number.value = num;
-  number.style.color = "#000";
-  number.style.borderColor = "#00ff26";
   document.querySelector(".lbl").style.color = "#00ff26";
   e.preventDefault();
   fetch(form.action, {
     method: "POST",
     body: new FormData(document.getElementById("sheetdb-form")),
   }).then((res) => {
+    reset.click();
+    activeCaptcha.click();
+    signup.disabled = true;
+    number.setAttribute("pattern", "[+][0-9]{3}-[0-9]{3}-[0-9]{4}");
+      birth.type = "text";
+      number.placeholder = " ";
     openOnce(
       "https://docs.google.com/spreadsheets/d/18kZ67VtcsijASNqx4t4f40wwjxdY86muDkKKJ06Tfmk/edit?usp=sharing,",
       "about:blank"
